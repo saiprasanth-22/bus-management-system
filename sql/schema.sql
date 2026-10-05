@@ -38,3 +38,35 @@ CREATE TABLE STUDENT (
     FOREIGN KEY (RouteID) REFERENCES ROUTE(RouteID),
     FOREIGN KEY (StopID) REFERENCES STOP(StopID)
 );
+
+CREATE TABLE BUS_STATUS (
+    BusNo VARCHAR(5) PRIMARY KEY,
+    CurrentStopID VARCHAR(5),
+    TripStatus VARCHAR(20),
+    LastUpdateTime TIME,
+    FOREIGN KEY (BusNo) REFERENCES BUS(BusNo),
+    FOREIGN KEY (CurrentStopID) REFERENCES STOP(StopID)
+);
+
+CREATE TABLE TRIP_LOG (
+    LogID VARCHAR(8) PRIMARY KEY,
+    StudentID VARCHAR(8),
+    BusNo VARCHAR(5),
+    TripDate DATE,
+    CheckInTime TIME,
+    CheckOutTime TIME,
+    TripStatus VARCHAR(20),
+    FOREIGN KEY (StudentID) REFERENCES STUDENT(StudentID),
+    FOREIGN KEY (BusNo) REFERENCES BUS(BusNo)
+);
+
+CREATE TABLE NOTIFICATION (
+    NotificationID VARCHAR(8) PRIMARY KEY,
+    BusNo VARCHAR(5),
+    StudentID VARCHAR(8),
+    NotificationType VARCHAR(15),
+    Message VARCHAR(120),
+    NotificationTime TIME,
+    FOREIGN KEY (BusNo) REFERENCES BUS(BusNo),
+    FOREIGN KEY (StudentID) REFERENCES STUDENT(StudentID)
+);
