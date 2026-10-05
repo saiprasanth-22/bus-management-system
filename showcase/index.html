@@ -5,22 +5,22 @@
 <title>Bus Management System</title><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header><button class="brand" data-go="home">▣ <span><b>BUS MANAGEMENT SYSTEM</b><small>School Transport / Classes I–XII</small></span></button>
+<header><button class="brand" data-go="home"><span class="brand-mark">BMS</span><span><b>BUS MANAGEMENT SYSTEM</b><small>School Transport / Classes I–XII</small></span></button>
 <nav><button data-go="home" class="active">Home</button><button data-go="student">Student</button><button data-go="faculty">Faculty</button><button id="tourBtn" class="tour">Platform Tour</button></nav></header>
 <main>
 <section id="home" class="screen active">
   <div class="image-home">
     <div class="image-hero">
       <div class="image-copy">
-        <span class="image-kicker">SMART TRANSPORT FOR BRIGHTER FUTURES</span>
-        <h1>SCHOOL TRANSPORT,<br><em>MAPPED CLEARLY.</em></h1>
-        <p>A connected transport record system for students, buses, routes and boarding stops from Classes I–XII. Track the recorded trip state, manage transport operations and review the school network from one place.</p>
+        <span class="image-kicker">SCHOOL TRANSPORT OPERATIONS / CLASSES I–XII</span>
+        <h1>SCHOOL TRANSPORT.<br><em>ONE CONNECTED SYSTEM.</em></h1>
+        <p>A structured transport management system for student records, route assignments, boarding stops and daily trip operations. Designed for clear oversight, consistent records and straightforward reporting.</p>
         <div class="image-actions">
           <button class="image-btn primary" data-go="student"><span>▰</span> Student Portal <b>→</b></button>
           <button class="image-btn secondary" data-go="faculty"><span>◉</span> Faculty Portal <b>→</b></button>
           <button class="image-btn tertiary" id="heroTour"><span>▶</span> Platform Tour <b>→</b></button>
         </div>
-        <div class="image-disclaimer">STOP-BASED TRACKING / FICTIONAL DEMONSTRATION DATA</div>
+        <div class="image-disclaimer">DEMONSTRATION SYSTEM / STOP-BASED TRACKING / FICTIONAL RECORDS</div>
       </div>
 
       <div class="image-visual" aria-label="School bus transport visual">
@@ -102,41 +102,57 @@
     </div>
 
     <div class="image-stats">
-      <div><span class="metric-icon">▰</span><strong>6</strong><p><b>Active Buses</b><small>Across all routes</small></p></div>
-      <div><span class="metric-icon">⌁</span><strong>6</strong><p><b>Routes</b><small>School network</small></p></div>
+      <div><span class="metric-icon">▰</span><strong>6</strong><p><b>Buses in Service</b><small>Assigned network</small></p></div>
+      <div><span class="metric-icon">⌁</span><strong>6</strong><p><b>Routes</b><small>Configured network</small></p></div>
       <div><span class="metric-icon">●</span><strong>18</strong><p><b>Boarding Stops</b><small>Across all routes</small></p></div>
       <div><span class="metric-icon">◉</span><strong>48</strong><p><b>Students</b><small>Classes I–XII</small></p></div>
-      <div class="metric-copy"><b>A SAFER, SMARTER<br>JOURNEY FOR EVERY STUDENT.</b></div>
+      <div class="metric-copy"><b>OPERATIONAL VISIBILITY<br>FROM ROUTE TO RECORD.</b></div>
     </div>
 
     <div class="image-portals">
-      <article class="portal-showcase student-showcase" data-go="student" tabindex="0">
-        <div class="portal-person student-person"><span></span><i></i><b></b></div>
+      <article class="portal-showcase mature-card student-showcase" data-go="student" tabindex="0">
+        <div class="portal-preview student-preview">
+          <div class="preview-head"><span>STUDENT RECORD</span><b>ST001</b></div>
+          <div class="preview-grid">
+            <div><small>BUS</small><strong>B01</strong></div>
+            <div><small>ROUTE</small><strong>R01</strong></div>
+            <div><small>STOP</small><strong>S01</strong></div>
+            <div><small>STATUS</small><strong class="preview-ok">PAID</strong></div>
+          </div>
+          <div class="preview-line"><i></i><span></span><i></i><span></span><i class="active"></i></div>
+        </div>
         <div class="portal-copy">
-          <span class="image-kicker">FOR STUDENTS</span>
-          <h2>Student Portal</h2>
-          <p>View bus route, boarding stop, trip state, fee information and route events.</p>
+          <span class="image-kicker">STUDENT ACCESS</span>
+          <h2>Transport Record</h2>
+          <p>Review the assigned bus, route, boarding stop, fee information and current trip state.</p>
           <div class="portal-features">
-            <span>⌁ <small>My Route</small></span>
-            <span>● <small>Bus Status</small></span>
-            <span>◷ <small>Check In/Out</small></span>
-            <span>! <small>Notifications</small></span>
+            <span><small>Route Assignment</small></span>
+            <span><small>Trip Status</small></span>
+            <span><small>Check In / Out</small></span>
+            <span><small>Route Notices</small></span>
           </div>
         </div>
         <button class="portal-arrow" aria-label="Open student portal">→</button>
       </article>
 
-      <article class="portal-showcase faculty-showcase" data-go="faculty" tabindex="0">
-        <div class="portal-person faculty-person"><span></span><i></i><b></b></div>
+      <article class="portal-showcase mature-card faculty-showcase" data-go="faculty" tabindex="0">
+        <div class="portal-preview faculty-preview">
+          <div class="preview-head"><span>OPERATIONS</span><b>06 ROUTES</b></div>
+          <div class="preview-bars">
+            <span style="--h:72%"></span><span style="--h:55%"></span><span style="--h:83%"></span>
+            <span style="--h:64%"></span><span style="--h:77%"></span><span style="--h:61%"></span>
+          </div>
+          <div class="preview-meta"><span>41 CHECKED IN</span><span>05 ON ROUTE</span></div>
+        </div>
         <div class="portal-copy">
-          <span class="image-kicker">FOR FACULTY</span>
-          <h2>Faculty Control</h2>
-          <p>Manage buses, routes, stops, students and current transport operations.</p>
+          <span class="image-kicker">FACULTY OPERATIONS</span>
+          <h2>Transport Control</h2>
+          <p>Manage buses, routes, stops, student assignments and current trip operations from one workspace.</p>
           <div class="portal-features">
-            <span>▰ <small>Bus Operations</small></span>
-            <span>◉ <small>Student Records</small></span>
-            <span>→ <small>Trip Monitor</small></span>
-            <span>▤ <small>Reports</small></span>
+            <span><small>Bus Operations</small></span>
+            <span><small>Student Records</small></span>
+            <span><small>Trip Monitor</small></span>
+            <span><small>Reports</small></span>
           </div>
         </div>
         <button class="portal-arrow" aria-label="Open faculty portal">→</button>
@@ -144,7 +160,7 @@
     </div>
 
     <div class="image-flow">
-      <div class="flow-title"><span class="image-kicker">HOW IT WORKS</span><h2>Our System Flow</h2><p>From buses to reports — a connected model for school transport.</p></div>
+      <div class="flow-title"><span class="image-kicker">DATA MODEL</span><h2>System Flow</h2><p>Each layer feeds the next: vehicle, route, stop, student and report.</p></div>
       <div class="flow-steps">
         <div><span>▰</span><b>Bus</b><small>B01</small></div><i>→</i>
         <div><span>⌁</span><b>Route</b><small>R01</small></div><i>→</i>
