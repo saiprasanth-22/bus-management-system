@@ -2,7 +2,7 @@
 
 A **Class XII Informatics Practices DBMS project** for managing school transport records for students from **Classes I-XII**.
 
-The project is intentionally constrained to concepts and methods supported by the supplied NCERT Informatics Practices Class XII textbook. The goal is to make the project look polished without introducing code the student cannot defend in a viva.
+The assessed project core is intentionally constrained to concepts and methods supported by the supplied NCERT Informatics Practices Class XII textbook. The hosted website is kept as a separate presentation layer so the visual demo does not contaminate the syllabus-scoped Python/MySQL/Pandas/Matplotlib build.
 
 ## Project idea
 
@@ -14,14 +14,36 @@ BUS ---- ROUTE ---- STOP
         STUDENT
 ```
 
-The project has two conceptual user experiences:
+The project has two user views:
 
 - **Student Portal** — view assigned bus, route, boarding stop, stop-based transport fee and fee status.
 - **Faculty Portal** — maintain transport records and analyse student/bus/route usage.
 
-The visual direction is **Modern Transit**: bright school-tech UI, metro-map route language, clean cards, route colours and restrained transport graphics.
+The visual direction is **Modern Transit**: bright school-tech UI, metro-map route language, clean cards and clear transport data.
 
-> Important: the website/dashboard UX is currently a design specification only. Runtime implementation remains within the NCERT-supported Python/Pandas/MySQL/Matplotlib scope unless the teacher explicitly allows additional frontend technologies.
+## Real build architecture
+
+```text
+CSV seed data
+     |
+     v
+Pandas read_csv()
+     |
+     v
+MySQL relational tables
+     |
+     v
+Pandas read_sql_query()
+     |
+     +--> student record
+     +--> faculty summaries
+     +--> grouped reports
+     |
+     v
+Matplotlib charts
+```
+
+The MySQL-connected implementation is documented in **`docs/REAL_BUILD.md`**.
 
 ## Repository structure
 
@@ -38,7 +60,9 @@ bus-management-system/
 │   ├── PROJECT_PLAN.md
 │   ├── DATABASE_DESIGN.md
 │   ├── UX_FLOW.md
-│   └── NCERT_METHODS.md
+│   ├── NCERT_METHODS.md
+│   ├── REAL_BUILD.md
+│   └── VIVA_MAP.md
 ├── sql/
 │   ├── schema.sql
 │   └── queries.sql
@@ -48,7 +72,16 @@ bus-management-system/
 │   ├── bus_wise_report.py
 │   ├── class_wise_report.py
 │   ├── route_wise_report.py
-│   └── distance_fee_report.py
+│   ├── distance_fee_report.py
+│   ├── database_load.py
+│   ├── database_student_view.py
+│   ├── database_faculty_reports.py
+│   └── database_export.py
+├── showcase/
+│   ├── index.html
+│   ├── styles.css
+│   ├── app.js
+│   └── README.md
 └── outputs/
     └── charts/
 ```
@@ -60,16 +93,33 @@ bus-management-system/
 - 6 buses
 - 6 routes
 - 18 stops with distance and fee data
-- Student-side record view demo using Pandas filtering
-- Faculty-side overview using sorting, filtering, grouping and counting
-- Four report scripts using NCERT-supported Matplotlib/Pandas plotting
-- MySQL schema and example queries
-- Full UX/walkthrough specification
+- relational MySQL schema with primary and foreign keys
+- Pandas CSV-to-MySQL loader
+- MySQL-backed Student record query
+- MySQL-backed Faculty reports
+- four Matplotlib report charts
+- MySQL-to-CSV export
+- SQL query collection
 - NCERT method whitelist
+- hosted Modern Transit showcase
+- viva/demo map
 
-## Run the Python examples
+## Run the real database build
 
-Run scripts from the repository root.
+First create the database using `sql/schema.sql`, then replace `YOUR_PASSWORD` in the database scripts with the local MySQL password.
+
+```bash
+python src/database_load.py
+python src/database_student_view.py
+python src/database_faculty_reports.py
+python src/database_export.py
+```
+
+For the full setup sequence, read `docs/REAL_BUILD.md`.
+
+## Offline CSV examples
+
+The earlier CSV-only scripts remain useful when MySQL is not available:
 
 ```bash
 python src/student_view.py
@@ -80,7 +130,9 @@ python src/route_wise_report.py
 python src/distance_fee_report.py
 ```
 
-The chart scripts save PNG files into `outputs/charts/`.
+## Hosted showcase
+
+The `showcase/` folder contains the presentation-only HTML/CSS/JavaScript interface deployed to Vercel. It is visually representative of the Student and Faculty portals but is **not** the assessed NCERT-scoped program logic.
 
 ## Data safety
 
