@@ -81,3 +81,51 @@ The transport fee is attached to the stop rather than repeated in every student 
 - 6 buses
 - 6 routes
 - 18 stops
+
+## Operational transport tables
+
+### BUS_STATUS
+
+| Field | Purpose |
+|---|---|
+| BusNo | Bus identifier |
+| CurrentStopID | Last recorded stop |
+| TripStatus | ON ROUTE / COMPLETED |
+| LastUpdateTime | Time of latest recorded movement |
+
+### TRIP_LOG
+
+| Field | Purpose |
+|---|---|
+| LogID | Unique log record |
+| StudentID | Student |
+| BusNo | Bus used for the trip |
+| TripDate | Date |
+| CheckInTime | Boarding time |
+| CheckOutTime | Leaving time |
+| TripStatus | ON BUS / CHECKED OUT / NOT BOARDED |
+
+### NOTIFICATION
+
+| Field | Purpose |
+|---|---|
+| NotificationID | Unique notice |
+| BusNo | Bus concerned |
+| StudentID | Optional student reference |
+| NotificationType | START / STOP |
+| Message | Event message |
+| NotificationTime | Event time |
+
+### Extended relationship
+
+```text
+ROUTE
+├── BUS
+│   ├── BUS_STATUS
+│   └── STUDENT
+│       └── TRIP_LOG
+├── STOP
+└── NOTIFICATION
+```
+
+`BUS_STATUS` represents the last recorded stop and therefore provides **stop-based tracking**, not GPS tracking.
