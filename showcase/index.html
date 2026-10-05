@@ -33,13 +33,13 @@
 <section id="student" class="screen">
   <div class="pagehead"><div><button class="back" data-go="home">← Home</button><span class="eyebrow">STUDENT PORTAL</span><h1>TRANSPORT RECORD</h1><p>Enter a student ID. Read the assigned route, stop, bus and fee record.</p></div>
   <div class="searchbox"><label>Student ID</label><div><input id="studentId" value="ST001"><button id="findStudent" class="primary">Find record</button></div><small>Try ST001, ST029, ST047</small></div></div>
-  <div class="student-grid"><article id="studentPass" class="pass card"></article><article id="studentRoute" class="route-card card"></article></div>
+  <div class="student-grid"><article id="studentPass" class="pass card"></article><article id="studentRoute" class="route-card card"></article></div><div class="student-ops-grid"><article id="studentTrip" class="ops-card card"></article><article id="studentNotices" class="ops-card card"></article></div>
 </section>
 
 <section id="faculty" class="screen">
   <div class="faculty">
    <aside><div class="aside-title"><small>FACULTY / OPERATIONS</small><b>TRANSPORT CONTROL</b></div>
-    <button data-view="dashboard" class="active">⌂ Dashboard</button><button data-view="students">◎ Students</button><button data-view="buses">▣ Buses</button><button data-view="routes">⌁ Routes</button><button data-view="stops">● Stops</button><button data-view="reports">▤ Reports</button>
+    <button data-view="dashboard" class="active">⌂ Dashboard</button><button data-view="students">◎ Students</button><button data-view="buses">▣ Buses</button><button data-view="routes">⌁ Routes</button><button data-view="stops">● Stops</button><button data-view="trips">→ Trip Monitor</button><button data-view="checkin">✓ Check In / Out</button><button data-view="notifications">! Notifications</button><button data-view="reports">▤ Reports</button>
     <div class="aside-foot"><span class="chip">● Demo dataset</span><small>48 fictional records</small></div>
    </aside>
    <div class="faculty-main"><div class="faculty-head"><div><button class="back" data-go="home">← Home</button><h1 id="facultyTitle">Dashboard</h1><p id="facultySub">Overview of the school transport network.</p></div><button class="secondary" id="facultyTour">How it works</button></div><div id="facultyContent"></div></div>
