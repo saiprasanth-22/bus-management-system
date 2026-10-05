@@ -39,13 +39,13 @@ FROM STUDENT
 GROUP BY ClassNo
 ORDER BY ClassNo;
 
--- Average transport fee
+-- Average stop-based transport fee
 SELECT AVG(TransportFee)
-FROM STUDENT;
+FROM STOP;
 
--- Highest and lowest transport fee
+-- Highest and lowest stop-based transport fee
 SELECT MAX(TransportFee), MIN(TransportFee)
-FROM STUDENT;
+FROM STOP;
 
 -- Buses with more than 7 assigned students
 SELECT BusNo, COUNT(*) AS StudentStrength
@@ -64,6 +64,12 @@ SELECT STUDENT.StudentID, STUDENT.StudentName, STUDENT.RouteID,
        ROUTE.RouteName, ROUTE.DistanceKm
 FROM STUDENT JOIN ROUTE
 ON STUDENT.RouteID = ROUTE.RouteID;
+
+-- Student with boarding stop and fee using JOIN
+SELECT STUDENT.StudentID, STUDENT.StudentName, STUDENT.StopID,
+       STOP.StopName, STOP.DistanceKm, STOP.TransportFee
+FROM STUDENT JOIN STOP
+ON STUDENT.StopID = STOP.StopID;
 
 -- Example faculty update
 UPDATE STUDENT

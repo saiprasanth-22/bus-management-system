@@ -18,5 +18,5 @@ print(buses.loc[buses["BusNo"] == "B01"])
 print("\nASSIGNED ROUTE")
 print(routes.loc[routes["RouteID"] == "R01"])
 
-print("\nBOARDING STOP")
+print("\nBOARDING STOP AND TRANSPORT FEE")
 print(stops.loc[stops["StopID"] == "S01"])

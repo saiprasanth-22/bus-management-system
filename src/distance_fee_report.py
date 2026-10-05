@@ -1,16 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-students = pd.read_csv("data/students.csv")
 stops = pd.read_csv("data/stops.csv")
 
-student_stop = students.join(
-    stops.set_index("StopID"),
-    on="StopID",
-    rsuffix="_Stop"
-)
-
-student_stop.plot(
+stops.plot(
     kind="scatter",
     x="DistanceKm",
     y="TransportFee",

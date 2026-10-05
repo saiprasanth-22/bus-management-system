@@ -16,7 +16,7 @@ BUS ---- ROUTE ---- STOP
 
 The project has two conceptual user experiences:
 
-- **Student Portal** — view assigned bus, route, boarding stop, distance and fee status.
+- **Student Portal** — view assigned bus, route, boarding stop, stop-based transport fee and fee status.
 - **Faculty Portal** — maintain transport records and analyse student/bus/route usage.
 
 The visual direction is **Modern Transit**: bright school-tech UI, metro-map route language, clean cards, route colours and restrained transport graphics.
@@ -59,8 +59,8 @@ bus-management-system/
 - Classes 1-12 represented
 - 6 buses
 - 6 routes
-- 18 stops
-- Student-side record lookup demo using Pandas filtering
+- 18 stops with distance and fee data
+- Student-side record view demo using Pandas filtering
 - Faculty-side overview using sorting, filtering, grouping and counting
 - Four report scripts using NCERT-supported Matplotlib/Pandas plotting
 - MySQL schema and example queries

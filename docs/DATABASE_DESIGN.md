@@ -13,7 +13,6 @@
 | BusNo | Assigned bus |
 | RouteID | Assigned route |
 | StopID | Boarding stop |
-| TransportFee | Transport fee |
 | FeeStatus | Paid/Pending |
 
 ### BUS
@@ -41,6 +40,7 @@
 | StopName | Human-readable stop name |
 | RouteID | Route containing the stop |
 | DistanceKm | Distance of stop from school |
+| TransportFee | Fee assigned to that stop |
 
 ## Relationships
 
@@ -61,6 +61,8 @@ STUDENT -> STOP
 BUS     -> ROUTE
 STOP    -> ROUTE
 ```
+
+The transport fee is attached to the stop rather than repeated in every student record. This keeps one fee value for each boarding stop.
 
 ## Data consistency rules
 

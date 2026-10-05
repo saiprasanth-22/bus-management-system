@@ -13,6 +13,7 @@ CREATE TABLE STOP (
     StopName VARCHAR(50),
     RouteID VARCHAR(5),
     DistanceKm DECIMAL(5,2),
+    TransportFee DECIMAL(8,2),
     FOREIGN KEY (RouteID) REFERENCES ROUTE(RouteID)
 );
 
@@ -32,7 +33,6 @@ CREATE TABLE STUDENT (
     BusNo VARCHAR(5),
     RouteID VARCHAR(5),
     StopID VARCHAR(5),
-    TransportFee DECIMAL(8,2),
     FeeStatus VARCHAR(10),
     FOREIGN KEY (BusNo) REFERENCES BUS(BusNo),
     FOREIGN KEY (RouteID) REFERENCES ROUTE(RouteID),
