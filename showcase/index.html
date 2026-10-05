@@ -5,13 +5,13 @@
 <title>Bus Management System</title><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header><button class="brand" data-go="home">▣ <span><b>Bus Management System</b><small>School Transport · Classes I–XII</small></span></button>
+<header><button class="brand" data-go="home">▣ <span><b>BUS MANAGEMENT SYSTEM</b><small>School Transport / Classes I–XII</small></span></button>
 <nav><button data-go="home" class="active">Home</button><button data-go="student">Student</button><button data-go="faculty">Faculty</button><button id="tourBtn" class="tour">Platform Tour</button></nav></header>
 <main>
 <section id="home" class="screen active">
   <div class="hero">
-    <div><span class="eyebrow">SCHOOL TRANSPORT · DBMS PROJECT</span><h1>School transport,<br><em>mapped clearly.</em></h1>
-    <p>A simple transport management system connecting students, buses, routes and boarding stops — with a clean student view and an operational faculty dashboard.</p>
+    <div><span class="eyebrow">SCHOOL TRANSPORT / DBMS PROJECT</span><h1>SCHOOL TRANSPORT,<br><em>MAPPED CLEARLY.</em></h1>
+    <p>A connected transport record system for students, buses, routes and boarding stops — built for fast lookup, clear operations and simple reporting.</p>
     <div class="actions"><button class="primary" data-go="student">Student Portal →</button><button class="secondary" data-go="faculty">Faculty Portal →</button><button class="ghost" id="heroTour">▶ Platform Tour</button></div>
     <small class="note">✓ Fictional demonstration records · Classes I–XII</small></div>
     <div class="network card"><div class="row"><span class="label">LIVE DATA MODEL</span><span class="chip">● Connected</span></div>
@@ -24,21 +24,21 @@
     </div>
   </div>
   <div class="portal-grid">
-    <article data-go="student"><span class="icon bluebg">ID</span><div><small>FOR STUDENTS</small><h2>Your transport details in one place.</h2><p>Bus, route, stop, distance, fee and payment status.</p></div><b>↗</b></article>
-    <article data-go="faculty"><span class="icon greenbg">OP</span><div><small>FOR FACULTY</small><h2>See the whole transport network.</h2><p>Students, buses, routes, stops and transport analysis.</p></div><b>↗</b></article>
+    <article data-go="student"><span class="icon bluebg">ID</span><div><small>FOR STUDENTS</small><h2>YOUR ROUTE. YOUR STOP. YOUR BUS.</h2><p>Bus, route, stop, distance, fee and payment status.</p></div><b>↗</b></article>
+    <article data-go="faculty"><span class="icon greenbg">OP</span><div><small>FOR FACULTY</small><h2>TRANSPORT CONTROL.</h2><p>Students, buses, routes, stops and transport analysis.</p></div><b>↗</b></article>
   </div>
-  <div class="flow"><div><small>HOW THE SYSTEM CONNECTS</small><b>Bus → Route → Stop → Student → Report</b></div><div class="steps"><span>01 Bus</span><i></i><span>02 Route</span><i></i><span>03 Stop</span><i></i><span>04 Student</span><i></i><span>05 Report</span></div></div>
+  <div class="flow"><div><small>SYSTEM FLOW / 05 STAGES</small><b>Bus → Route → Stop → Student → Report</b></div><div class="steps"><span>01 Bus</span><i></i><span>02 Route</span><i></i><span>03 Stop</span><i></i><span>04 Student</span><i></i><span>05 Report</span></div></div>
 </section>
 
 <section id="student" class="screen">
-  <div class="pagehead"><div><button class="back" data-go="home">← Home</button><span class="eyebrow">STUDENT PORTAL</span><h1>My transport</h1><p>Enter a student ID to view the assigned transport record.</p></div>
+  <div class="pagehead"><div><button class="back" data-go="home">← Home</button><span class="eyebrow">STUDENT PORTAL</span><h1>TRANSPORT RECORD</h1><p>Enter a student ID. Read the assigned route, stop, bus and fee record.</p></div>
   <div class="searchbox"><label>Student ID</label><div><input id="studentId" value="ST001"><button id="findStudent" class="primary">Find record</button></div><small>Try ST001, ST029, ST047</small></div></div>
   <div class="student-grid"><article id="studentPass" class="pass card"></article><article id="studentRoute" class="route-card card"></article></div>
 </section>
 
 <section id="faculty" class="screen">
   <div class="faculty">
-   <aside><div class="aside-title"><small>FACULTY</small><b>Transport Desk</b></div>
+   <aside><div class="aside-title"><small>FACULTY / OPERATIONS</small><b>TRANSPORT CONTROL</b></div>
     <button data-view="dashboard" class="active">⌂ Dashboard</button><button data-view="students">◎ Students</button><button data-view="buses">▣ Buses</button><button data-view="routes">⌁ Routes</button><button data-view="stops">● Stops</button><button data-view="reports">▤ Reports</button>
     <div class="aside-foot"><span class="chip">● Demo dataset</span><small>48 fictional records</small></div>
    </aside>
