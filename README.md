@@ -62,6 +62,7 @@ bus-management-system/
 │   ├── UX_FLOW.md
 │   ├── NCERT_METHODS.md
 │   ├── REAL_BUILD.md
+│   ├── TRIP_TRACKING.md
 │   └── VIVA_MAP.md
 ├── sql/
 │   ├── schema.sql
@@ -96,6 +97,9 @@ bus-management-system/
 - relational MySQL schema with primary and foreign keys
 - Pandas CSV-to-MySQL loader
 - MySQL-backed Student record query
+- student check-in / check-out trip logs
+- stop-based bus tracking records
+- route START / STOP notification records
 - MySQL-backed Faculty reports
 - four Matplotlib report charts
 - MySQL-to-CSV export
