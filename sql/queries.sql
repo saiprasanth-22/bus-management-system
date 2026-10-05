@@ -75,3 +75,59 @@ ON STUDENT.StopID = STOP.StopID;
 UPDATE STUDENT
 SET FeeStatus = 'Paid'
 WHERE StudentID = 'ST003';
+
+-- Current stop-based bus tracking
+SELECT BUS_STATUS.BusNo,
+       ROUTE.RouteName,
+       STOP.StopName,
+       BUS_STATUS.TripStatus,
+       BUS_STATUS.LastUpdateTime
+FROM BUS_STATUS
+JOIN BUS
+ON BUS_STATUS.BusNo = BUS.BusNo
+JOIN ROUTE
+ON BUS.RouteID = ROUTE.RouteID
+JOIN STOP
+ON BUS_STATUS.CurrentStopID = STOP.StopID
+ORDER BY BUS_STATUS.BusNo;
+
+-- Today's check-in and check-out records
+SELECT StudentID, BusNo, CheckInTime, CheckOutTime, TripStatus
+FROM TRIP_LOG
+WHERE TripDate = '2026-10-06'
+ORDER BY CheckInTime;
+
+-- Check one student's trip record
+SELECT * FROM TRIP_LOG
+WHERE StudentID = 'ST001';
+
+-- Count students by trip status
+SELECT TripStatus, COUNT(*) AS StudentCount
+FROM TRIP_LOG
+GROUP BY TripStatus;
+
+-- Start/stop notification records for one bus
+SELECT NotificationType, Message, NotificationTime
+FROM NOTIFICATION
+WHERE BusNo = 'B01'
+ORDER BY NotificationTime;
+
+-- Example: move bus B01 to the next stop
+UPDATE BUS_STATUS
+SET CurrentStopID = 'S03',
+    TripStatus = 'ON ROUTE',
+    LastUpdateTime = '07:42:00'
+WHERE BusNo = 'B01';
+
+-- Example: check out student ST001
+UPDATE TRIP_LOG
+SET CheckOutTime = '07:48:00',
+    TripStatus = 'Checked Out'
+WHERE StudentID = 'ST001'
+AND TripDate = '2026-10-06';
+
+-- Example: mark bus B01 route as completed
+UPDATE BUS_STATUS
+SET TripStatus = 'COMPLETED',
+    LastUpdateTime = '07:55:00'
+WHERE BusNo = 'B01';
