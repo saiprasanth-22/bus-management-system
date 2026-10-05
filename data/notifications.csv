@@ -1,0 +1,8 @@
+NotificationID,BusNo,StudentID,NotificationType,Message,NotificationTime
+N001,B01,,START,Bus B01 started North Line,07:00:00
+N002,B02,,START,Bus B02 started East Line,07:02:00
+N003,B03,,START,Bus B03 started Lake Line,07:04:00
+N004,B04,,START,Bus B04 started Central Line,07:05:00
+N005,B05,,START,Bus B05 started West Line,07:06:00
+N006,B06,,START,Bus B06 started Garden Line,07:03:00
+N007,B06,,STOP,Bus B06 completed Garden Line,07:54:00
