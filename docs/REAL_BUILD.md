@@ -54,8 +54,11 @@ This creates:
 - `STOP`
 - `BUS`
 - `STUDENT`
+- `BUS_STATUS`
+- `TRIP_LOG`
+- `NOTIFICATION`
 
-with primary and foreign keys.
+with primary and foreign keys. The final three tables add stop-based bus tracking, student check-in/check-out records and route start/stop notifications.
 
 ### 3. Add the database password
 
@@ -84,7 +87,7 @@ From the repository root:
 python src/database_load.py
 ```
 
-The loader reads the four CSV files using Pandas and appends them to the corresponding MySQL tables.
+The loader reads the CSV seed files using Pandas and appends them to the corresponding MySQL tables, including the trip-status, boarding-log and notification records.
 
 Run it once after creating a fresh database. Running it repeatedly without clearing the tables will conflict with the primary keys.
 
@@ -108,7 +111,7 @@ to another fictional ID such as `ST029` or `ST047`, then run:
 python src/database_student_view.py
 ```
 
-The output is read from MySQL, not from the CSV file.
+The output is read from MySQL, not from the CSV file. It now includes the current recorded bus stop, trip status, check-in/check-out values and route start/stop notifications.
 
 ### 6. Run faculty reports from MySQL
 
@@ -116,7 +119,7 @@ The output is read from MySQL, not from the CSV file.
 python src/database_faculty_reports.py
 ```
 
-This reads database records, prints grouped summaries and saves four report charts.
+This reads database records, prints grouped summaries, current bus-status records, boarding-status counts and start/stop notifications, then saves four report charts.
 
 ### 7. Export the live MySQL records back to CSV
 
@@ -134,7 +137,9 @@ The project keeps record-editing SQL visible in:
 sql/queries.sql
 ```
 
-For example, fee status can be changed with an `UPDATE` query and then the Python reports can be rerun to show the current database state.
+For example, fee status, the current bus stop, trip completion state and a student check-out can be changed with `UPDATE` queries and then the Python views can be rerun to show the current database state.
+
+See `docs/TRIP_TRACKING.md` for the tracking boundary and demo flow.
 
 ## Submission boundary
 
