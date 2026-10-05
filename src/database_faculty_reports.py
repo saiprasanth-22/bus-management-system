@@ -61,6 +61,48 @@ print(class_strength)
 print("\nROUTE-WISE STUDENT STRENGTH")
 print(route_strength)
 
+bus_status = pd.read_sql_query(
+    """
+    SELECT BUS_STATUS.BusNo,
+           ROUTE.RouteName,
+           STOP.StopName,
+           BUS_STATUS.TripStatus,
+           BUS_STATUS.LastUpdateTime
+    FROM BUS_STATUS
+    JOIN BUS
+    ON BUS_STATUS.BusNo = BUS.BusNo
+    JOIN ROUTE
+    ON BUS.RouteID = ROUTE.RouteID
+    JOIN STOP
+    ON BUS_STATUS.CurrentStopID = STOP.StopID
+    ORDER BY BUS_STATUS.BusNo
+    """,
+    engine
+)
+
+trip_status = pd.read_sql_query(
+    """
+    SELECT TripStatus, COUNT(*) AS StudentCount
+    FROM TRIP_LOG
+    GROUP BY TripStatus
+    """,
+    engine
+)
+
+notifications = pd.read_sql_query(
+    "SELECT * FROM NOTIFICATION ORDER BY NotificationTime",
+    engine
+)
+
+print("\nCURRENT BUS TRACKING")
+print(bus_status)
+
+print("\nCHECK-IN / CHECK-OUT SUMMARY")
+print(trip_status)
+
+print("\nSTART / STOP NOTIFICATIONS")
+print(notifications)
+
 bus_strength.plot(
     kind="bar",
     x="BusNo",
