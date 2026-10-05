@@ -1,0 +1,19 @@
+StopID,StopName,RouteID,DistanceKm
+S01,Maple Gate,R01,4.0
+S02,North Market,R01,8.0
+S03,Hill View,R01,12.0
+S04,Sunrise Circle,R02,3.5
+S05,East Park,R02,7.0
+S06,River Gate,R02,10.5
+S07,Lake Road,R03,2.5
+S08,Lotus Junction,R03,5.0
+S09,Blue Lake,R03,8.0
+S10,City Square,R04,2.0
+S11,Central Avenue,R04,4.0
+S12,Station Road,R04,6.5
+S13,West End,R05,3.5
+S14,Stadium Cross,R05,7.0
+S15,Orchard Road,R05,11.0
+S16,Garden Gate,R06,3.0
+S17,Green Park,R06,6.0
+S18,Valley Road,R06,9.0
