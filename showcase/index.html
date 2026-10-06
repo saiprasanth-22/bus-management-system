@@ -1,194 +1,285 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bus Management System</title><link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f7f9">
+  <title>Bus Management System</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header><button class="brand" data-go="home"><span class="brand-mark">BMS</span><span><b>BUS MANAGEMENT SYSTEM</b><small>School Transport / Classes I–XII</small></span></button>
-<nav><button data-go="home" class="active">Home</button><button data-go="student">Student</button><button data-go="faculty">Faculty</button><button id="tourBtn" class="tour">Platform Tour</button></nav></header>
-<main>
-<section id="home" class="screen active">
-  <div class="image-home">
-    <div class="image-hero">
-      <div class="image-copy">
-        <span class="image-kicker">SCHOOL TRANSPORT OPERATIONS / CLASSES I–XII</span>
-        <h1>SCHOOL TRANSPORT.<br><em>ONE CONNECTED SYSTEM.</em></h1>
-        <p>A structured transport management system for student records, route assignments, boarding stops and daily trip operations. Designed for clear oversight, consistent records and straightforward reporting.</p>
-        <div class="image-actions">
-          <button class="image-btn primary" data-go="student"><span>▰</span> Student Portal <b>→</b></button>
-          <button class="image-btn secondary" data-go="faculty"><span>◉</span> Faculty Portal <b>→</b></button>
-          <button class="image-btn tertiary" id="heroTour"><span>▶</span> Platform Tour <b>→</b></button>
-        </div>
-        <div class="image-disclaimer">DEMONSTRATION SYSTEM / STOP-BASED TRACKING / FICTIONAL RECORDS</div>
+  <header class="site-header">
+    <button class="brand" data-go="home" aria-label="Home">
+      <span class="brand-mark">BMS</span>
+      <span class="brand-copy">
+        <strong>Bus Management System</strong>
+        <small>School transport operations</small>
+      </span>
+    </button>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <button class="nav-link active" data-go="home">Overview</button>
+      <button class="nav-link" data-go="student">Student</button>
+      <button class="nav-link" data-go="faculty">Faculty</button>
+      <button class="nav-link" id="tourBtn">System tour</button>
+    </nav>
+
+    <div class="header-status">
+      <span class="status-dot"></span>
+      <span>Demo dataset</span>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="screen active">
+      <div class="home-shell">
+        <section class="home-hero">
+          <div class="hero-copy">
+            <span class="eyebrow">TRANSPORT OPERATIONS / CLASSES I–XII</span>
+            <h1>One system for routes, riders and daily operations.</h1>
+            <p>Manage student transport records, bus assignments, boarding stops, trip status and route events from one clear operational view.</p>
+
+            <div class="hero-actions">
+              <button class="btn primary" data-go="faculty">Open faculty workspace</button>
+              <button class="btn secondary" data-go="student">View student record</button>
+              <button class="btn text" id="heroTour">See how it works →</button>
+            </div>
+
+            <div class="hero-facts">
+              <div><strong>48</strong><span>Students</span></div>
+              <div><strong>06</strong><span>Buses</span></div>
+              <div><strong>06</strong><span>Routes</span></div>
+              <div><strong>18</strong><span>Stops</span></div>
+            </div>
+          </div>
+
+          <div class="ops-preview">
+            <div class="preview-topbar">
+              <div>
+                <span class="section-kicker">TODAY / MORNING SERVICE</span>
+                <h2>Operations overview</h2>
+              </div>
+              <span class="badge success"><i></i> 5 buses on route</span>
+            </div>
+
+            <div class="preview-metrics">
+              <article>
+                <span>Checked in</span>
+                <strong>41</strong>
+                <small>of 48 students</small>
+              </article>
+              <article>
+                <span>On bus</span>
+                <strong>35</strong>
+                <small>current riders</small>
+              </article>
+              <article>
+                <span>Completed</span>
+                <strong>01</strong>
+                <small>route today</small>
+              </article>
+            </div>
+
+            <div class="route-board">
+              <div class="route-board-head">
+                <span>Route</span><span>Current stop</span><span>Update</span><span>Status</span>
+              </div>
+              <div class="route-board-row">
+                <strong>R01 · North Line</strong><span>North Market</span><time>07:28</time><b class="status-text active">On route</b>
+              </div>
+              <div class="route-board-row">
+                <strong>R02 · East Line</strong><span>East Park</span><time>07:31</time><b class="status-text active">On route</b>
+              </div>
+              <div class="route-board-row">
+                <strong>R03 · Lake Line</strong><span>Lotus Junction</span><time>07:34</time><b class="status-text active">On route</b>
+              </div>
+              <div class="route-board-row">
+                <strong>R06 · Garden Line</strong><span>Valley Road</span><time>07:54</time><b class="status-text complete">Completed</b>
+              </div>
+            </div>
+
+            <div class="preview-route">
+              <div class="preview-route-title">
+                <span>R01 / NORTH LINE</span>
+                <strong>B01</strong>
+              </div>
+              <div class="route-track">
+                <div class="track-stop done"><i></i><span>School</span></div>
+                <b></b>
+                <div class="track-stop done"><i></i><span>Maple Gate</span></div>
+                <b></b>
+                <div class="track-stop current"><i></i><span>North Market</span></div>
+                <b></b>
+                <div class="track-stop"><i></i><span>Hill View</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="access-section">
+          <div class="section-heading">
+            <span class="section-kicker">ROLE-BASED ACCESS</span>
+            <h2>Two views. One transport record.</h2>
+            <p>The same underlying data is presented differently for students and transport staff.</p>
+          </div>
+
+          <div class="access-grid">
+            <article class="access-card" data-go="student" tabindex="0">
+              <div class="access-index">01</div>
+              <div class="access-content">
+                <span class="section-kicker">STUDENT</span>
+                <h3>Transport record</h3>
+                <p>Assigned bus, route, boarding stop, fee status, trip state and route notices.</p>
+                <div class="access-preview student-access-preview">
+                  <div><small>STUDENT</small><strong>Aarav Sharma</strong></div>
+                  <div><small>BUS</small><strong>B01</strong></div>
+                  <div><small>ROUTE</small><strong>R01</strong></div>
+                  <div><small>STOP</small><strong>S01</strong></div>
+                </div>
+              </div>
+              <button class="card-link" aria-label="Open student portal">Open →</button>
+            </article>
+
+            <article class="access-card" data-go="faculty" tabindex="0">
+              <div class="access-index">02</div>
+              <div class="access-content">
+                <span class="section-kicker">FACULTY</span>
+                <h3>Transport control</h3>
+                <p>Operational overview, student records, routes, stop status, check-in logs and reports.</p>
+                <div class="access-preview faculty-access-preview">
+                  <span style="--h:64%"></span>
+                  <span style="--h:78%"></span>
+                  <span style="--h:56%"></span>
+                  <span style="--h:84%"></span>
+                  <span style="--h:71%"></span>
+                  <span style="--h:62%"></span>
+                </div>
+              </div>
+              <button class="card-link" aria-label="Open faculty workspace">Open →</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="model-section">
+          <div class="section-heading compact">
+            <span class="section-kicker">DATA MODEL</span>
+            <h2>From assignment to report.</h2>
+          </div>
+          <div class="model-flow">
+            <div><span>01</span><strong>Bus</strong><small>B01–B06</small></div>
+            <i></i>
+            <div><span>02</span><strong>Route</strong><small>R01–R06</small></div>
+            <i></i>
+            <div><span>03</span><strong>Stop</strong><small>S01–S18</small></div>
+            <i></i>
+            <div><span>04</span><strong>Student</strong><small>ST001–ST048</small></div>
+            <i></i>
+            <div><span>05</span><strong>Report</strong><small>Operational output</small></div>
+          </div>
+        </section>
+
+        <section class="scope-note">
+          <div>
+            <span class="section-kicker">PROJECT BOUNDARY</span>
+            <h2>Built as a Class XII Informatics Practices project.</h2>
+          </div>
+          <p>The hosted interface is a presentation layer. The assessed project logic remains separated in MySQL, Pandas and Matplotlib with fictional demonstration records.</p>
+        </section>
       </div>
+    </section>
 
-      <div class="image-visual" aria-label="School bus transport visual">
-        <div class="campus-sky"></div>
-        <div class="campus-building b1"></div>
-        <div class="campus-building b2"></div>
-        <div class="campus-building b3"></div>
-        <div class="campus-tree t1"></div>
-        <div class="campus-tree t2"></div>
-
-        <div class="map-screen">
-          <div class="map-head">
-            <div class="map-bus-icon">▰</div>
-            <div><strong>B01</strong><small>NORTH LINE / MORNING RUN</small></div>
-            <span class="map-status">ON ROUTE</span>
-            <time>07:28</time>
+    <section id="student" class="screen">
+      <div class="portal-shell student-shell">
+        <div class="portal-top">
+          <div>
+            <button class="back-link" data-go="home">← Overview</button>
+            <span class="section-kicker">STUDENT ACCESS</span>
+            <h1>Transport record</h1>
+            <p>Look up a fictional student record and review the assigned transport details.</p>
           </div>
-          <div class="map-canvas">
-            <span class="map-road r1"></span><span class="map-road r2"></span><span class="map-road r3"></span><span class="map-road r4"></span>
-            <svg viewBox="0 0 560 150" class="map-route" aria-hidden="true">
-              <path d="M44 82 C120 86 142 51 210 61 S314 111 379 89 S459 62 516 70"/>
-              <g class="map-stop"><circle cx="44" cy="82" r="9"/><circle cx="44" cy="82" r="3"/></g>
-              <g class="map-stop current"><circle cx="210" cy="61" r="11"/><circle cx="210" cy="61" r="4"/></g>
-              <g class="map-stop"><circle cx="379" cy="89" r="9"/><circle cx="379" cy="89" r="3"/></g>
-              <g class="map-stop"><circle cx="516" cy="70" r="9"/><circle cx="516" cy="70" r="3"/></g>
-            </svg>
-            <div class="map-label l1"><b>S01</b><span>Maple Gate</span><small>07:10</small></div>
-            <div class="map-label l2 active"><b>S02</b><span>North Market</span><small>07:28</small></div>
-            <div class="map-label l3"><b>S03</b><span>Hill View</span><small>07:36</small></div>
-            <div class="map-label l4"><b>SCHOOL</b><span>Campus</span><small>07:52</small></div>
+          <div class="lookup-card">
+            <label for="studentId">Student ID</label>
+            <div>
+              <input id="studentId" value="ST001" autocomplete="off" spellcheck="false">
+              <button class="btn primary" id="findStudent">Search</button>
+            </div>
+            <small>Try ST001, ST029 or ST047</small>
           </div>
         </div>
 
-        <div class="bus-art">
-          <svg viewBox="0 0 620 260" role="img" aria-label="Illustrated school bus">
-            <defs>
-              <linearGradient id="busYellow" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ffd441"/>
-                <stop offset="100%" stop-color="#e99b16"/>
-              </linearGradient>
-              <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#17345d"/>
-                <stop offset="100%" stop-color="#0b1f3a"/>
-              </linearGradient>
-            </defs>
-            <ellipse cx="317" cy="224" rx="232" ry="22" fill="rgba(18,39,66,.13)"/>
-            <g class="bus-body">
-              <path d="M111 65 H465 Q510 65 536 98 L567 139 V200 H98 V101 Q98 65 111 65Z" fill="url(#busYellow)"/>
-              <path d="M121 80 H452 Q481 80 501 103 L526 132 H121Z" fill="#152d4d"/>
-              <rect x="139" y="91" width="67" height="34" rx="4" fill="url(#glass)"/>
-              <rect x="215" y="91" width="67" height="34" rx="4" fill="url(#glass)"/>
-              <rect x="291" y="91" width="67" height="34" rx="4" fill="url(#glass)"/>
-              <rect x="367" y="91" width="63" height="34" rx="4" fill="url(#glass)"/>
-              <path d="M447 91 H485 Q499 91 509 105 L524 126 H447Z" fill="url(#glass)"/>
-              <rect x="122" y="144" width="404" height="8" rx="4" fill="#123055"/>
-              <rect x="145" y="160" width="272" height="13" rx="5" fill="#f6c431"/>
-              <rect x="118" y="178" width="420" height="9" rx="4" fill="#0d2b51"/>
-              <rect x="139" y="40" width="214" height="36" rx="9" fill="#102946"/>
-              <text x="246" y="65" text-anchor="middle">SCHOOL BUS</text>
-              <circle cx="182" cy="204" r="35" fill="#12263f"/><circle cx="182" cy="204" r="14" fill="#d7dde5"/>
-              <circle cx="470" cy="204" r="35" fill="#12263f"/><circle cx="470" cy="204" r="14" fill="#d7dde5"/>
-              <rect x="528" y="157" width="24" height="20" rx="5" fill="#f7f9fc"/>
-              <rect x="98" y="158" width="16" height="19" rx="4" fill="#f05a3a"/>
-            </g>
-          </svg>
-        </div>
-
-        <div class="image-float check-float">
-          <span class="float-icon">◉</span>
-          <div><small>CHECKED-IN STUDENTS</small><strong>41 / 48</strong><span><i style="width:85%"></i></span></div>
-        </div>
-
-        <div class="image-float stop-float">
-          <span class="pin">●</span>
-          <div><small>CURRENT STOP</small><strong>S02</strong><b>North Market</b><time>07:28 AM</time></div>
-          <em>RECORDED</em>
-        </div>
+        <div id="studentContent" class="student-content"></div>
       </div>
-    </div>
+    </section>
 
-    <div class="image-stats">
-      <div><span class="metric-icon">▰</span><strong>6</strong><p><b>Buses in Service</b><small>Assigned network</small></p></div>
-      <div><span class="metric-icon">⌁</span><strong>6</strong><p><b>Routes</b><small>Configured network</small></p></div>
-      <div><span class="metric-icon">●</span><strong>18</strong><p><b>Boarding Stops</b><small>Across all routes</small></p></div>
-      <div><span class="metric-icon">◉</span><strong>48</strong><p><b>Students</b><small>Classes I–XII</small></p></div>
-      <div class="metric-copy"><b>OPERATIONAL VISIBILITY<br>FROM ROUTE TO RECORD.</b></div>
-    </div>
+    <section id="faculty" class="screen">
+      <div class="faculty-app">
+        <aside class="app-sidebar">
+          <div class="sidebar-brand">
+            <span>BMS</span>
+            <div><strong>Transport Control</strong><small>Faculty workspace</small></div>
+          </div>
 
-    <div class="image-portals">
-      <article class="portal-showcase mature-card student-showcase" data-go="student" tabindex="0">
-        <div class="portal-preview student-preview">
-          <div class="preview-head"><span>STUDENT RECORD</span><b>ST001</b></div>
-          <div class="preview-grid">
-            <div><small>BUS</small><strong>B01</strong></div>
-            <div><small>ROUTE</small><strong>R01</strong></div>
-            <div><small>STOP</small><strong>S01</strong></div>
-            <div><small>STATUS</small><strong class="preview-ok">PAID</strong></div>
-          </div>
-          <div class="preview-line"><i></i><span></span><i></i><span></span><i class="active"></i></div>
-        </div>
-        <div class="portal-copy">
-          <span class="image-kicker">STUDENT ACCESS</span>
-          <h2>Transport Record</h2>
-          <p>Review the assigned bus, route, boarding stop, fee information and current trip state.</p>
-          <div class="portal-features">
-            <span><small>Route Assignment</small></span>
-            <span><small>Trip Status</small></span>
-            <span><small>Check In / Out</small></span>
-            <span><small>Route Notices</small></span>
-          </div>
-        </div>
-        <button class="portal-arrow" aria-label="Open student portal">→</button>
-      </article>
+          <nav class="sidebar-nav" aria-label="Faculty navigation">
+            <button class="active" data-view="dashboard">Overview</button>
+            <button data-view="students">Students</button>
+            <button data-view="buses">Buses</button>
+            <button data-view="routes">Routes</button>
+            <button data-view="stops">Stops</button>
+            <button data-view="trips">Trip monitor</button>
+            <button data-view="checkin">Check in / out</button>
+            <button data-view="notifications">Notifications</button>
+            <button data-view="reports">Reports</button>
+          </nav>
 
-      <article class="portal-showcase mature-card faculty-showcase" data-go="faculty" tabindex="0">
-        <div class="portal-preview faculty-preview">
-          <div class="preview-head"><span>OPERATIONS</span><b>06 ROUTES</b></div>
-          <div class="preview-bars">
-            <span style="--h:72%"></span><span style="--h:55%"></span><span style="--h:83%"></span>
-            <span style="--h:64%"></span><span style="--h:77%"></span><span style="--h:61%"></span>
+          <div class="sidebar-foot">
+            <span class="sidebar-status"><i></i> Demo data loaded</span>
+            <small>48 fictional student records</small>
           </div>
-          <div class="preview-meta"><span>41 CHECKED IN</span><span>05 ON ROUTE</span></div>
-        </div>
-        <div class="portal-copy">
-          <span class="image-kicker">FACULTY OPERATIONS</span>
-          <h2>Transport Control</h2>
-          <p>Manage buses, routes, stops, student assignments and current trip operations from one workspace.</p>
-          <div class="portal-features">
-            <span><small>Bus Operations</small></span>
-            <span><small>Student Records</small></span>
-            <span><small>Trip Monitor</small></span>
-            <span><small>Reports</small></span>
-          </div>
-        </div>
-        <button class="portal-arrow" aria-label="Open faculty portal">→</button>
-      </article>
-    </div>
+        </aside>
 
-    <div class="image-flow">
-      <div class="flow-title"><span class="image-kicker">DATA MODEL</span><h2>System Flow</h2><p>Each layer feeds the next: vehicle, route, stop, student and report.</p></div>
-      <div class="flow-steps">
-        <div><span>▰</span><b>Bus</b><small>B01</small></div><i>→</i>
-        <div><span>⌁</span><b>Route</b><small>R01</small></div><i>→</i>
-        <div><span>●</span><b>Stop</b><small>S02</small></div><i>→</i>
-        <div><span>◉</span><b>Student</b><small>ST001</small></div><i>→</i>
-        <div><span>▤</span><b>Report</b><small>RPT</small></div>
+        <section class="workspace">
+          <header class="workspace-header">
+            <div>
+              <button class="back-link" data-go="home">← Overview</button>
+              <span class="section-kicker">FACULTY / OPERATIONS</span>
+              <h1 id="facultyTitle">Overview</h1>
+              <p id="facultySub">Current transport activity and record status.</p>
+            </div>
+            <div class="workspace-actions">
+              <span class="dataset-date">06 OCT 2026</span>
+              <button class="btn secondary" id="facultyTour">System tour</button>
+            </div>
+          </header>
+
+          <div id="facultyContent" class="workspace-content"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div id="tour" class="tour-overlay" aria-hidden="true">
+    <div class="tour-dialog" role="dialog" aria-modal="true" aria-labelledby="tourTitle">
+      <div class="tour-header">
+        <div>
+          <span class="section-kicker">SYSTEM TOUR</span>
+          <strong id="tourTitle">How the project fits together</strong>
+        </div>
+        <button id="closeTour" class="icon-button" aria-label="Close tour">×</button>
+      </div>
+      <div id="progress" class="tour-progress"></div>
+      <div id="tourBody" class="tour-body"></div>
+      <div class="tour-actions">
+        <button id="prev" class="btn secondary">Previous</button>
+        <button id="next" class="btn primary">Next</button>
       </div>
     </div>
   </div>
-</section>
 
-<section id="student" class="screen">
-  <div class="pagehead"><div><button class="back" data-go="home">← Home</button><span class="eyebrow">STUDENT PORTAL</span><h1>TRANSPORT RECORD</h1><p>Enter a student ID. Read the assigned route, stop, bus and fee record.</p></div>
-  <div class="searchbox"><label>Student ID</label><div><input id="studentId" value="ST001"><button id="findStudent" class="primary">Find record</button></div><small>Try ST001, ST029, ST047</small></div></div>
-  <div class="student-grid"><article id="studentPass" class="pass card"></article><article id="studentRoute" class="route-card card"></article></div><div class="student-ops-grid"><article id="studentTrip" class="ops-card card"></article><article id="studentNotices" class="ops-card card"></article></div>
-</section>
+  <footer class="site-footer">
+    <span>Bus Management System · Class XII Informatics Practices</span>
+    <span>Presentation layer · fictional dataset</span>
+  </footer>
 
-<section id="faculty" class="screen">
-  <div class="faculty">
-   <aside><div class="aside-title"><small>FACULTY / OPERATIONS</small><b>TRANSPORT CONTROL</b></div>
-    <button data-view="dashboard" class="active">⌂ Dashboard</button><button data-view="students">◎ Students</button><button data-view="buses">▣ Buses</button><button data-view="routes">⌁ Routes</button><button data-view="stops">● Stops</button><button data-view="trips">→ Trip Monitor</button><button data-view="checkin">✓ Check In / Out</button><button data-view="notifications">! Notifications</button><button data-view="reports">▤ Reports</button>
-    <div class="aside-foot"><span class="chip">● Demo dataset</span><small>48 fictional records</small></div>
-   </aside>
-   <div class="faculty-main"><div class="faculty-head"><div><button class="back" data-go="home">← Home</button><h1 id="facultyTitle">Dashboard</h1><p id="facultySub">Overview of the school transport network.</p></div><button class="secondary" id="facultyTour">How it works</button></div><div id="facultyContent"></div></div>
-  </div>
-</section>
-</main>
-
-<div id="tour" class="overlay"><div class="modal"><button id="closeTour" class="close">×</button><div id="progress" class="progress"></div><div id="tourBody" class="tour-body"></div><div class="tour-actions"><button id="prev" class="ghost">← Previous</button><button id="next" class="primary">Next →</button></div></div></div>
-<footer><span>Bus Management System · Class XII Informatics Practices</span><span>Presentation frontend · NCERT-scoped core remains separate</span></footer>
-<script src="app.js"></script></body></html>
+  <script src="app.js"></script>
+</body>
+</html>
