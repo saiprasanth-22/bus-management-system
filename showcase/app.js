@@ -18,11 +18,13 @@ const stateFor = bus => find(DATA.busStatus,"BusNo",bus);
 const stopFor = id => find(DATA.stops,"StopID",id);
 const routeFor = id => find(DATA.routes,"RouteID",id);
 const busFor = id => find(DATA.buses,"BusNo",id);
-let demoMinute = 55;
+let demoTime = (7 * 60) + 55;
 
 function timeNow(){
-  demoMinute += 1;
-  return "07:" + String(demoMinute).padStart(2,"0") + ":00";
+  demoTime = (demoTime + 1) % (24 * 60);
+  const hours = Math.floor(demoTime / 60);
+  const minutes = demoTime % 60;
+  return String(hours).padStart(2,"0") + ":" + String(minutes).padStart(2,"0") + ":00";
 }
 function shortTime(value){
   return value ? value.slice(0,5) : "—";
