@@ -152,7 +152,7 @@ function renderStudent(id){
         <div class="student-identity">
           <div class="student-identity-top">
             <div>
-              <span class="section-kicker">STUDENT TRANSPORT RECORD</span>
+              <span class="section-kicker">MY JOURNEY DETAILS</span>
               <h2>${s.StudentName}</h2>
               <p>Class ${s.ClassNo} · Section ${s.Section}</p>
             </div>
@@ -193,7 +193,7 @@ function renderStudent(id){
     <div class="student-secondary-grid">
       <section class="panel">
         <div class="panel-header">
-          <div><span class="section-kicker">TODAY</span><h2>Trip activity</h2></div>
+          <div><span class="section-kicker">TODAY</span><h2>My journey</h2></div>
           <span class="badge neutral">06 OCT 2026</span>
         </div>
         <div class="timeline-list">
@@ -208,8 +208,8 @@ function renderStudent(id){
 
       <section class="panel">
         <div class="panel-header">
-          <div><span class="section-kicker">ROUTE EVENTS</span><h2>Notifications</h2></div>
-          <span class="badge neutral">${notices.length} events</span>
+          <div><span class="section-kicker">JUST FOR YOU</span><h2>Bus updates</h2></div>
+          <span class="badge neutral">${notices.length} updates</span>
         </div>
         <div class="notice-list">
           ${notices.length ? notices.slice().reverse().map(n=>`
@@ -259,11 +259,11 @@ function renderFaculty(view){
       </div>
       <div class="workspace-grid">
         <section class="workspace-panel">
-          <div class="workspace-panel-header"><div><h2>Active route status</h2><p>Last recorded stop for each bus</p></div><span class="badge success"><i></i> Morning service</span></div>
-          <div class="panel-body">${tripList(false)}</div>
+          <div class="workspace-panel-header"><div><h2>Move today’s buses</h2><p>Update a route and students see the change immediately</p></div><span class="badge success"><i></i> Morning service</span></div>
+          <div class="panel-body">${tripList(true)}</div>
         </section>
         <section class="workspace-panel">
-          <div class="workspace-panel-header"><div><h2>Route events</h2><p>Latest start and completion records</p></div></div>
+          <div class="workspace-panel-header"><div><h2>Latest updates</h2><p>Messages created by today’s bus movements</p></div></div>
           <div class="panel-body">${notificationFeed(DATA.notifications.slice().reverse().slice(0,7))}</div>
         </section>
         <section class="workspace-panel wide">
@@ -324,10 +324,11 @@ function tripList(interactive){
     const r=routeFor(b.RouteID),state=stateFor(b.BusNo),current=stopFor(state.CurrentStopID);
     const rs=DATA.stops.filter(x=>x.RouteID===r.RouteID);
     const idx=rs.findIndex(x=>x.StopID===state.CurrentStopID);
-    return `<article class="trip-card">
+    const actionLabel=state.TripStatus==="COMPLETED"?"Start trip":idx===rs.length-1?"Finish trip":"Next stop";
+    return `<article class="trip-card ${state.TripStatus==="COMPLETED"?"trip-complete":""}">
       <div class="trip-card-head">
         <div><span class="section-kicker">${b.BusNo} / ${r.RouteID}</span><h3>${r.RouteName}</h3><small>${b.DriverName} · last stop ${current.StopName} · ${shortTime(state.LastUpdateTime)}</small></div>
-        <div class="trip-card-actions">${statusChip(state.TripStatus)}${interactive?'<button class="small-button" data-advance="'+b.BusNo+'">'+(state.TripStatus==="COMPLETED"?"Restart":"Advance")+'</button>':""}</div>
+        <div class="trip-card-actions">${statusChip(state.TripStatus)}${interactive?'<button class="small-button route-action" data-advance="'+b.BusNo+'">'+actionLabel+'</button>':""}</div>
       </div>
       <div class="mini-track">
         <div class="mini-stop done"><i></i><span>School</span></div><b></b>
