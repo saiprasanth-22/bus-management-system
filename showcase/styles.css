@@ -1677,5 +1677,12 @@ body{background:linear-gradient(180deg,#fffaf0 0,#f7fbfd 44%,#fff 100%)}
 .tour-dialog{border:0;border-radius:24px}.tour-header{min-height:78px;padding:18px 22px}.tour-header strong{font-size:16px;font-weight:900}.icon-button{border-radius:12px}.tour-visual{border-radius:18px;background:linear-gradient(135deg,#e6f5ff,#fff4c9)}
 
 @media(max-width:1180px){.trip-list{grid-template-columns:1fr}}
-@media(max-width:900px){.student-overview-grid,.student-secondary-grid{grid-template-columns:1fr}.faculty-app{grid-template-columns:1fr}.workspace-header{padding:22px}.workspace{padding:24px 18px 50px}}
+@media(max-width:900px){
+  .student-overview-grid,.student-secondary-grid{grid-template-columns:1fr}
+  .faculty-app{grid-template-columns:minmax(0,1fr);width:100%;max-width:100vw;overflow:hidden}
+  .app-sidebar,.workspace{width:100%;min-width:0;max-width:100vw}
+  .sidebar-nav{width:100%;min-width:0;max-width:calc(100vw - 20px);overscroll-behavior-inline:contain}
+  .workspace-header{padding:22px}
+  .workspace{padding:24px 18px 50px}
+}
 @media(max-width:700px){.student-alert-card h2{font-size:25px}.workspace-grid{grid-template-columns:1fr}.metric-grid{grid-template-columns:1fr 1fr}.trip-card-head{flex-direction:column}.trip-card-actions{justify-content:flex-start}.mini-track{min-width:520px}.trip-card{overflow:auto}.notice-item{grid-template-columns:42px 1fr}.notice-type{display:none}}
