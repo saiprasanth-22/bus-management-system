@@ -44,6 +44,8 @@ Matplotlib charts
 ```
 
 The MySQL-connected implementation is documented in **`docs/REAL_BUILD.md`**.
+For the classroom walkthrough, demo script and viva answers, use
+**`docs/PRESENTATION_GUIDE.md`**.
 
 ## Repository structure
 
