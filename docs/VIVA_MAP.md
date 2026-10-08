@@ -4,14 +4,18 @@ Use this file as the short explanation of how the real project works.
 
 ## What is the project?
 
-A school bus transport management system for students from Classes I-XII. It stores students, buses, routes and stops in related tables and uses the stored records for retrieval and analysis.
+A school bus tracking and transport management system for students from Classes
+I-XII. Students sign in to follow their assigned bus and receive route updates;
+faculty sign in to update stops, boarding records and trip status.
 
-## Why four tables?
+## What are the main tables?
 
 - `ROUTE` stores the route itself.
 - `STOP` stores the boarding stops that belong to a route.
 - `BUS` stores buses assigned to routes.
 - `STUDENT` stores the student's bus, route, stop and fee status.
+- `USER_ACCOUNT` connects login credentials and roles to a student when needed.
+- `BUS_STATUS`, `TRIP_LOG` and `NOTIFICATION` record the live journey.
 
 This avoids putting every detail into one large table and makes the relationships easier to explain.
 
@@ -59,8 +63,10 @@ The hosted site is a presentation prototype of the Student and Faculty UX. The s
 A clean demonstration is:
 
 1. Show the four MySQL tables.
-2. Run `database_student_view.py` for one Student ID.
-3. Run one or two queries from `sql/queries.sql`.
-4. Run `database_faculty_reports.py`.
-5. Show the saved charts.
-6. Open the hosted showcase only as the visual concept.
+2. Run `database_login.py` to demonstrate role-based login.
+3. Run `database_student_view.py` for one Student ID.
+4. Open the hosted Student portal and show the assigned bus and notifications.
+5. Open the Faculty portal, advance a bus to its next stop, then return to the
+   Student portal to show the updated journey.
+6. Run one or two queries from `sql/queries.sql`.
+7. Run `database_faculty_reports.py` and show the saved charts.

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f6f7f9">
-  <title>Bus Management System</title>
+  <meta name="theme-color" content="#fff9ea">
+  <title>BusBuddy — School Bus Tracking</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,16 +12,16 @@
     <button class="brand" data-go="home" aria-label="Home">
       <span class="brand-mark">BMS</span>
       <span class="brand-copy">
-        <strong>Bus Management System</strong>
-        <small>School transport operations</small>
+        <strong>BusBuddy</strong>
+        <small>School bus tracking</small>
       </span>
     </button>
 
     <nav class="site-nav" aria-label="Primary navigation">
-      <button class="nav-link active" data-go="home">Overview</button>
-      <button class="nav-link" data-go="student">Student</button>
-      <button class="nav-link" data-go="faculty">Faculty</button>
-      <button class="nav-link" id="tourBtn">System tour</button>
+      <button class="nav-link active" data-go="home">Home</button>
+      <button class="nav-link" data-login="student">Track my bus</button>
+      <button class="nav-link" data-login="faculty">Faculty</button>
+      <button class="nav-link" id="tourBtn">How it works</button>
     </nav>
 
     <div class="header-status">
@@ -33,103 +33,50 @@
   <main>
     <section id="home" class="screen active">
       <div class="home-shell">
-        <section class="home-hero">
+        <section class="home-hero new-hero">
           <div class="hero-copy">
-            <span class="eyebrow">TRANSPORT OPERATIONS / CLASSES I–XII</span>
-            <h1>One system for routes, riders and daily operations.</h1>
-            <p>Manage student transport records, bus assignments, boarding stops, trip status and route events from one clear operational view.</p>
+            <span class="eyebrow">SAFE ROUTES · HAPPY MORNINGS</span>
+            <h1>Your school bus, <em>right on time.</em></h1>
+            <p>See when your bus starts, follow it from stop to stop, and know exactly when it is time to get ready.</p>
 
             <div class="hero-actions">
-              <button class="btn primary" data-go="faculty">Open faculty workspace</button>
-              <button class="btn secondary" data-go="student">View student record</button>
-              <button class="btn text" id="heroTour">See how it works →</button>
+              <button class="btn primary" data-login="student">Track my bus <span>→</span></button>
+              <button class="btn secondary" data-login="faculty">Faculty login</button>
+              <button class="btn text" id="heroTour">How does it work?</button>
             </div>
 
             <div class="hero-facts">
+              <div><strong>6</strong><span>School buses</span></div>
+              <div><strong>18</strong><span>Safe stops</span></div>
               <div><strong>48</strong><span>Students</span></div>
-              <div><strong>06</strong><span>Buses</span></div>
-              <div><strong>06</strong><span>Routes</span></div>
-              <div><strong>18</strong><span>Stops</span></div>
             </div>
           </div>
 
-          <div class="ops-preview">
-            <div class="preview-topbar">
-              <div>
-                <span class="section-kicker">TODAY / MORNING SERVICE</span>
-                <h2>Operations overview</h2>
-              </div>
-              <span class="badge success"><i></i> 5 buses on route</span>
-            </div>
-
-            <div class="preview-metrics">
-              <article>
-                <span>Checked in</span>
-                <strong>41</strong>
-                <small>of 48 students</small>
-              </article>
-              <article>
-                <span>On bus</span>
-                <strong>35</strong>
-                <small>current riders</small>
-              </article>
-              <article>
-                <span>Completed</span>
-                <strong>01</strong>
-                <small>route today</small>
-              </article>
-            </div>
-
-            <div class="route-board">
-              <div class="route-board-head">
-                <span>Route</span><span>Current stop</span><span>Update</span><span>Status</span>
-              </div>
-              <div class="route-board-row">
-                <strong>R01 · North Line</strong><span>North Market</span><time>07:28</time><b class="status-text active">On route</b>
-              </div>
-              <div class="route-board-row">
-                <strong>R02 · East Line</strong><span>East Park</span><time>07:31</time><b class="status-text active">On route</b>
-              </div>
-              <div class="route-board-row">
-                <strong>R03 · Lake Line</strong><span>Lotus Junction</span><time>07:34</time><b class="status-text active">On route</b>
-              </div>
-              <div class="route-board-row">
-                <strong>R06 · Garden Line</strong><span>Valley Road</span><time>07:54</time><b class="status-text complete">Completed</b>
-              </div>
-            </div>
-
-            <div class="preview-route">
-              <div class="preview-route-title">
-                <span>R01 / NORTH LINE</span>
-                <strong>B01</strong>
-              </div>
-              <div class="route-track">
-                <div class="track-stop done"><i></i><span>School</span></div>
-                <b></b>
-                <div class="track-stop done"><i></i><span>Maple Gate</span></div>
-                <b></b>
-                <div class="track-stop current"><i></i><span>North Market</span></div>
-                <b></b>
-                <div class="track-stop"><i></i><span>Hill View</span></div>
-              </div>
+          <div class="hero-visual" aria-label="A school bus travelling toward school">
+            <div class="hero-live-card">
+              <span class="live-pill"><i></i> LIVE</span>
+              <small>YOUR BUS · B03</small>
+              <strong>2 stops away</strong>
+              <p>Lake Line · arriving in about 8 min</p>
+              <div class="mini-journey"><i class="done"></i><b></b><span>🚌</span><b></b><i></i></div>
             </div>
           </div>
         </section>
 
         <section class="access-section">
           <div class="section-heading">
-            <span class="section-kicker">ROLE-BASED ACCESS</span>
-            <h2>Two views. One transport record.</h2>
-            <p>The same underlying data is presented differently for students and transport staff.</p>
+            <span class="section-kicker">CHOOSE YOUR PORTAL</span>
+            <h2>Where would you like to go?</h2>
+            <p>Students follow their journey. Faculty keep every route moving safely.</p>
           </div>
 
           <div class="access-grid">
-            <article class="access-card" data-go="student" tabindex="0">
-              <div class="access-index">01</div>
+            <article class="access-card student-card" data-login="student" tabindex="0">
+              <div class="access-index">🎒</div>
               <div class="access-content">
-                <span class="section-kicker">STUDENT</span>
-                <h3>Transport record</h3>
-                <p>Assigned bus, route, boarding stop, fee status, trip state and route notices.</p>
+                <span class="section-kicker">FOR STUDENTS</span>
+                <h3>Where is my bus?</h3>
+                <p>Follow your bus, see how many stops remain, and receive friendly journey updates.</p>
                 <div class="access-preview student-access-preview">
                   <div><small>STUDENT</small><strong>Aarav Sharma</strong></div>
                   <div><small>BUS</small><strong>B01</strong></div>
@@ -137,15 +84,15 @@
                   <div><small>STOP</small><strong>S01</strong></div>
                 </div>
               </div>
-              <button class="card-link" aria-label="Open student portal">Open →</button>
+              <button class="card-link" aria-label="Open student portal">Track bus →</button>
             </article>
 
-            <article class="access-card" data-go="faculty" tabindex="0">
-              <div class="access-index">02</div>
+            <article class="access-card faculty-card" data-login="faculty" tabindex="0">
+              <div class="access-index">🚌</div>
               <div class="access-content">
-                <span class="section-kicker">FACULTY</span>
-                <h3>Transport control</h3>
-                <p>Operational overview, student records, routes, stop status, check-in logs and reports.</p>
+                <span class="section-kicker">FOR FACULTY</span>
+                <h3>Manage today’s trips</h3>
+                <p>Start routes, update stops, record boarding, and keep students informed.</p>
                 <div class="access-preview faculty-access-preview">
                   <span style="--h:64%"></span>
                   <span style="--h:78%"></span>
@@ -155,36 +102,50 @@
                   <span style="--h:62%"></span>
                 </div>
               </div>
-              <button class="card-link" aria-label="Open faculty workspace">Open →</button>
+              <button class="card-link" aria-label="Open faculty workspace">Open desk →</button>
             </article>
           </div>
         </section>
 
-        <section class="model-section">
+        <section class="model-section friendly-steps">
           <div class="section-heading compact">
-            <span class="section-kicker">DATA MODEL</span>
-            <h2>From assignment to report.</h2>
+            <span class="section-kicker">ONE SIMPLE JOURNEY</span>
+            <h2>Ready, track, arrive!</h2>
           </div>
           <div class="model-flow">
-            <div><span>01</span><strong>Bus</strong><small>B01–B06</small></div>
+            <div><span>01</span><strong>Faculty starts the trip</strong><small>The route becomes live</small></div>
             <i></i>
-            <div><span>02</span><strong>Route</strong><small>R01–R06</small></div>
+            <div><span>02</span><strong>Students follow the bus</strong><small>Every stop updates</small></div>
             <i></i>
-            <div><span>03</span><strong>Stop</strong><small>S01–S18</small></div>
-            <i></i>
-            <div><span>04</span><strong>Student</strong><small>ST001–ST048</small></div>
-            <i></i>
-            <div><span>05</span><strong>Report</strong><small>Operational output</small></div>
+            <div><span>03</span><strong>Everyone arrives safely</strong><small>The journey is recorded</small></div>
           </div>
         </section>
 
         <section class="scope-note">
           <div>
-            <span class="section-kicker">PROJECT BOUNDARY</span>
-            <h2>Built as a Class XII Informatics Practices project.</h2>
+            <span class="section-kicker">SMART UNDERNEATH, SIMPLE OUTSIDE</span>
+            <h2>A friendly app powered by a real database.</h2>
           </div>
-          <p>The interface demonstrates the same fictional transport records used by the MySQL, Pandas and Matplotlib project, keeping every screen easy to explain during evaluation.</p>
+          <p>Students, buses, routes, stops, trip logs and notifications are connected through a clear relational model built with MySQL, Python and Pandas.</p>
         </section>
+      </div>
+    </section>
+
+    <section id="login" class="screen">
+      <div class="login-shell">
+        <button class="back-link" data-go="home">← Back home</button>
+        <div class="login-card">
+          <div class="login-art"><span>🚌</span><h2 id="loginWelcome">Welcome aboard!</h2><p id="loginMessage">Sign in to follow your school bus.</p></div>
+          <form id="loginForm" class="login-form">
+            <span class="section-kicker" id="loginRoleLabel">STUDENT LOGIN</span>
+            <h1>Let’s get you moving.</h1>
+            <label>Username<input id="loginUsername" autocomplete="username" required></label>
+            <label>Password<input id="loginPassword" type="password" autocomplete="current-password" required></label>
+            <p class="login-error" id="loginError" role="alert"></p>
+            <button class="btn primary" type="submit">Sign in <span>→</span></button>
+            <p class="demo-credentials" id="demoCredentials">Demo: <strong>student</strong> / <strong>1</strong></p>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -194,14 +155,14 @@
           <div>
             <button class="back-link" data-go="home">← Overview</button>
             <span class="section-kicker">STUDENT ACCESS</span>
-            <h1>Transport record</h1>
-            <p>Look up a fictional student record and review the assigned transport details.</p>
+            <h1>Where is my bus?</h1>
+            <p>Follow your route and see the latest update from your bus.</p>
           </div>
           <div class="lookup-card">
             <label for="studentId">Student ID</label>
             <div>
-              <input id="studentId" value="ST001" autocomplete="off" spellcheck="false">
-              <button class="btn primary" id="findStudent">Search</button>
+              <input id="studentId" value="ST029" autocomplete="off" spellcheck="false">
+              <button class="btn primary" id="findStudent">Track bus</button>
             </div>
             <small>Try ST001, ST029 or ST047</small>
           </div>
@@ -215,12 +176,12 @@
       <div class="faculty-app">
         <aside class="app-sidebar">
           <div class="sidebar-brand">
-            <span>BMS</span>
-            <div><strong>Transport Control</strong><small>Faculty workspace</small></div>
+            <span>BB</span>
+            <div><strong>BusBuddy</strong><small>Faculty desk</small></div>
           </div>
 
           <nav class="sidebar-nav" aria-label="Faculty navigation">
-            <button class="active" data-view="dashboard">Overview</button>
+            <button class="active" data-view="dashboard">Today</button>
             <button data-view="students">Students</button>
             <button data-view="buses">Buses</button>
             <button data-view="routes">Routes</button>
@@ -242,12 +203,12 @@
             <div>
               <button class="back-link" data-go="home">← Overview</button>
               <span class="section-kicker">FACULTY / OPERATIONS</span>
-              <h1 id="facultyTitle">Overview</h1>
-              <p id="facultySub">Current transport activity and record status.</p>
+              <h1 id="facultyTitle">Today’s trips</h1>
+              <p id="facultySub">See every bus, student and route at a glance.</p>
             </div>
             <div class="workspace-actions">
               <span class="dataset-date">06 OCT 2026</span>
-              <button class="btn secondary" id="facultyTour">System tour</button>
+              <button class="btn secondary" id="facultyTour">How it works</button>
             </div>
           </header>
 
@@ -261,8 +222,8 @@
     <div class="tour-dialog" role="dialog" aria-modal="true" aria-labelledby="tourTitle">
       <div class="tour-header">
         <div>
-          <span class="section-kicker">SYSTEM TOUR</span>
-          <strong id="tourTitle">How the project fits together</strong>
+          <span class="section-kicker">HOW IT WORKS</span>
+          <strong id="tourTitle">One journey, two simple views</strong>
         </div>
         <button id="closeTour" class="icon-button" aria-label="Close tour">×</button>
       </div>
@@ -276,8 +237,8 @@
   </div>
 
   <footer class="site-footer">
-    <span>Bus Management System · Class XII Informatics Practices</span>
-    <span>Interactive demonstration · fictional dataset</span>
+    <span>BusBuddy · School Bus Tracking System</span>
+    <span>MySQL · Python · Pandas · fictional dataset</span>
   </footer>
 
   <script src="app.js"></script>

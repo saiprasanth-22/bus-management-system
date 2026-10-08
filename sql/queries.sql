@@ -1,6 +1,17 @@
 -- View all student transport records
 SELECT * FROM STUDENT;
 
+-- Role-based login with an optional linked student record
+SELECT USER_ACCOUNT.Username,
+       USER_ACCOUNT.UserRole,
+       USER_ACCOUNT.StudentID,
+       STUDENT.StudentName
+FROM USER_ACCOUNT
+LEFT JOIN STUDENT
+ON USER_ACCOUNT.StudentID = STUDENT.StudentID
+WHERE USER_ACCOUNT.Username = 'student'
+AND USER_ACCOUNT.DemoPassword = '1';
+
 -- Students in a particular class
 SELECT * FROM STUDENT
 WHERE ClassNo = 8;

@@ -54,11 +54,16 @@ This creates:
 - `STOP`
 - `BUS`
 - `STUDENT`
+- `USER_ACCOUNT`
 - `BUS_STATUS`
 - `TRIP_LOG`
 - `NOTIFICATION`
 
 with primary and foreign keys. The final three tables add stop-based bus tracking, student check-in/check-out records and route start/stop notifications.
+
+`USER_ACCOUNT` supports the Student and Faculty login demonstration. Run
+`python src/database_login.py` to show the corresponding MySQL `SELECT`,
+`LEFT JOIN` and `WHERE` conditions.
 
 ### 3. Add the database password
 
@@ -66,6 +71,7 @@ Open these files:
 
 - `src/database_load.py`
 - `src/database_student_view.py`
+- `src/database_login.py`
 - `src/database_faculty_reports.py`
 - `src/database_export.py`
 

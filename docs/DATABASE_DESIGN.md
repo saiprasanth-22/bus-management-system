@@ -2,6 +2,19 @@
 
 ## Core entities
 
+### USER_ACCOUNT
+
+| Field | Purpose |
+|---|---|
+| AccountID | Unique account identifier |
+| Username | Login name |
+| DemoPassword | Presentation-only password value |
+| UserRole | STUDENT or FACULTY |
+| StudentID | Optional linked student record |
+
+The demonstration keeps the login query readable for a Class XII viva. A real
+production system must store a secure password hash rather than a plain value.
+
 ### STUDENT
 
 | Field | Purpose |
@@ -58,6 +71,7 @@ A student record therefore connects to:
 STUDENT -> BUS
 STUDENT -> ROUTE
 STUDENT -> STOP
+USER_ACCOUNT -> STUDENT (student accounts only)
 BUS     -> ROUTE
 STOP    -> ROUTE
 ```
@@ -73,6 +87,7 @@ The transport fee is attached to the stop rather than repeated in every student 
 - Bus capacity must not be exceeded.
 - Fee status is kept as `Paid` or `Pending`.
 - Public repository data must remain fictional.
+- Username values are unique and each student account links to one student.
 
 ## Current sample dataset
 

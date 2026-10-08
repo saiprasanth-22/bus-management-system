@@ -39,6 +39,21 @@ function statusClass(value){
 function statusChip(value){
   return '<span class="status-chip ' + statusClass(value) + '">' + humanStatus(value) + '</span>';
 }
+let loginRole = "student";
+
+function openLogin(role){
+  loginRole = role === "faculty" ? "faculty" : "student";
+  const isFaculty = loginRole === "faculty";
+  $("loginRoleLabel").textContent = isFaculty ? "FACULTY LOGIN" : "STUDENT LOGIN";
+  $("loginWelcome").textContent = isFaculty ? "Ready for today’s routes?" : "Welcome aboard!";
+  $("loginMessage").textContent = isFaculty ? "Sign in to manage buses, stops and student journeys." : "Sign in to follow your school bus.";
+  $("demoCredentials").innerHTML = 'Demo: <strong>' + (isFaculty ? "faculty" : "student") + '</strong> / <strong>1</strong>';
+  $("loginUsername").value = isFaculty ? "faculty" : "student";
+  $("loginPassword").value = "1";
+  $("loginError").textContent = "";
+  go("login");
+}
+
 function go(screen){
   document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
   $(screen).classList.add("active");
@@ -48,6 +63,8 @@ function go(screen){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 document.addEventListener("click",e=>{
+  const loginEl=e.target.closest("[data-login]");
+  if(loginEl) openLogin(loginEl.dataset.login);
   const goEl=e.target.closest("[data-go]");
   if(goEl) go(goEl.dataset.go);
   const viewEl=e.target.closest("[data-view]");
@@ -58,8 +75,20 @@ document.addEventListener("click",e=>{
   if(check){ changeCheck(check.dataset.student,check.dataset.check); renderFaculty("checkin"); }
 });
 document.addEventListener("keydown",e=>{
-  const card=e.target.closest("[data-go][tabindex]");
-  if(card && (e.key==="Enter" || e.key===" ")){ e.preventDefault(); go(card.dataset.go); }
+  const card=e.target.closest("[data-login][tabindex]");
+  if(card && (e.key==="Enter" || e.key===" ")){ e.preventDefault(); openLogin(card.dataset.login); }
+});
+
+$("loginForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const expected = loginRole === "faculty" ? "faculty" : "student";
+  const username = $("loginUsername").value.trim().toLowerCase();
+  const password = $("loginPassword").value;
+  if(username !== expected || password !== "1"){
+    $("loginError").textContent = "That login does not match this demo portal. Try the details shown below.";
+    return;
+  }
+  go(loginRole);
 });
 
 function renderStudent(id){
@@ -79,6 +108,21 @@ function renderStudent(id){
   const routeStops=DATA.stops.filter(x=>x.RouteID===route.RouteID);
   const notices=DATA.notifications.filter(x=>x.BusNo===s.BusNo).slice().sort((a,b)=>a.NotificationTime.localeCompare(b.NotificationTime));
   const currentIndex=routeStops.findIndex(x=>x.StopID===state.CurrentStopID);
+  const studentStopIndex=routeStops.findIndex(x=>x.StopID===s.StopID);
+  const stopsAway=Math.max(0,studentStopIndex-currentIndex);
+  const arrivalMessage=state.TripStatus==="COMPLETED"
+    ? "Today’s route is complete"
+    : currentIndex===studentStopIndex
+      ? "Your bus is at your stop!"
+      : currentIndex>studentStopIndex
+        ? "Your bus has passed your stop"
+        : stopsAway===1
+          ? "Time to get ready — one stop away!"
+          : `${stopsAway} stops away`;
+  const etaMessage=state.TripStatus==="COMPLETED" ? "See you on the next trip" : `${Math.max(2,stopsAway*4)} min estimated arrival`;
+  const etaValue=state.TripStatus==="COMPLETED" ? "✓" : currentIndex===studentStopIndex ? "NOW" : currentIndex>studentStopIndex ? "→" : Math.max(2,stopsAway*4);
+  const etaLabel=state.TripStatus==="COMPLETED" ? "complete" : currentIndex===studentStopIndex ? "at your stop" : currentIndex>studentStopIndex ? "passed" : "minutes";
+  const etaDetail=currentIndex>=studentStopIndex && state.TripStatus!=="COMPLETED" ? arrivalMessage : etaMessage;
 
   const routeRows = [
     {name:"School Campus",id:"ORIGIN",distance:"0 km",kind:"origin"},
@@ -98,6 +142,11 @@ function renderStudent(id){
   ];
 
   $("studentContent").innerHTML = `
+    <section class="student-alert-card">
+      <div class="alert-bus">🚌</div>
+      <div><span class="section-kicker">LIVE JOURNEY · ${s.BusNo}</span><h2>${arrivalMessage}</h2><p>${route.RouteName} · ${currentStop.StopName} · updated ${shortTime(state.LastUpdateTime)}</p></div>
+      <div class="eta-bubble"><strong>${etaValue}</strong><span>${etaLabel}</span><small>${etaDetail}</small></div>
+    </section>
     <div class="student-overview-grid">
       <section class="panel">
         <div class="student-identity">
@@ -177,7 +226,7 @@ $("findStudent").addEventListener("click",()=>renderStudent($("studentId").value
 $("studentId").addEventListener("keydown",e=>{if(e.key==="Enter")renderStudent(e.target.value)});
 
 const viewMeta={
-  dashboard:["Overview","Current transport activity and record status."],
+  dashboard:["Today’s trips","See every bus, student and route at a glance."],
   students:["Students","Student assignments and current boarding state."],
   buses:["Buses","Vehicle assignments, drivers and route status."],
   routes:["Routes","Configured routes, distances and student demand."],
@@ -314,6 +363,8 @@ function advanceBus(busNo){
   }else if(idx<rs.length-1){
     state.CurrentStopID=rs[idx+1].StopID;
     state.LastUpdateTime=t;
+    const reached=rs[idx+1];
+    DATA.notifications.push({NotificationID:"N"+String(DATA.notifications.length+1).padStart(3,"0"),BusNo:busNo,StudentID:"",NotificationType:"STOP UPDATE",Message:"Bus "+busNo+" reached "+reached.StopName,NotificationTime:t});
   }else{
     state.TripStatus="COMPLETED";
     state.LastUpdateTime=t;
@@ -369,28 +420,28 @@ function reportView(){
 /* tour */
 const tourSteps=[
   {
-    title:"One connected transport record",
-    text:"The project links buses, routes, stops and students so the same source data can support both student lookup and faculty operations.",
+    title:"Everything begins in the database",
+    text:"Students, buses, routes and stops are linked, so everyone sees the right journey without entering the same information twice.",
     visual:'<div class="tour-mini-grid"><div><strong>06</strong><small>BUSES</small></div><div><strong>06</strong><small>ROUTES</small></div><div><strong>18</strong><small>STOPS</small></div><div><strong>48</strong><small>STUDENTS</small></div></div>'
   },
   {
-    title:"Student access stays focused",
-    text:"The student view shows only the assigned transport record, current trip state, boarding activity and route events.",
+    title:"Students ask one simple question",
+    text:"After signing in, a student can see where the assigned bus is, how many stops remain and when it is time to get ready.",
     visual:'<div class="tour-record"><header><small>STUDENT TRANSPORT RECORD</small><strong>Aarav Sharma · ST001</strong></header><section><span>BUS / B01</span><span>ROUTE / R01</span><span>STOP / S01</span><span>STATUS / ON BUS</span></section></div>'
   },
   {
-    title:"Faculty get an operations workspace",
-    text:"The faculty view is deliberately denser: current trips, student assignments, buses, routes, boarding logs, notifications and reports.",
+    title:"Faculty keep the journey moving",
+    text:"Faculty start a trip, advance the bus to the next registered stop and record when students get on or off.",
     visual:'<div class="tour-mini-grid"><div><strong>41</strong><small>CHECKED IN</small></div><div><strong>35</strong><small>ON BUS</small></div><div><strong>07</strong><small>NOT BOARDED</small></div><div><strong>05</strong><small>ON ROUTE</small></div></div>'
   },
   {
-    title:"Tracking is stop-based",
-    text:"For the academic build, the current bus state is represented by the last recorded stop and time. The hosted demo does not claim GPS positioning.",
+    title:"Each stop creates an update",
+    text:"The academic build tracks the last registered stop and time. Every update appears immediately in the student’s journey view.",
     visual:'<div class="tour-record"><header><small>R01 / NORTH LINE</small><strong>B01 · ON ROUTE</strong></header><section><span>SCHOOL</span><span>S01 / MAPLE GATE</span><span>S02 / CURRENT</span><span>S03 / HILL VIEW</span></section></div>'
   },
   {
-    title:"Records become reports",
-    text:"The same data produces bus strength, class usage, route demand and distance-versus-fee charts in the MySQL/Pandas/Matplotlib project core.",
+    title:"Journeys become useful records",
+    text:"Trip logs and notifications also produce simple reports about route demand, bus strength, class usage and transport fees.",
     visual:'<div class="tour-mini-grid"><div><strong>BAR</strong><small>BUS STRENGTH</small></div><div><strong>LINE</strong><small>CLASS USAGE</small></div><div><strong>BAR</strong><small>ROUTE DEMAND</small></div><div><strong>SCATTER</strong><small>DISTANCE / FEE</small></div></div>'
   }
 ];
@@ -421,5 +472,5 @@ $("next").addEventListener("click",()=>{if(tourIndex<tourSteps.length-1){tourInd
 $("tour").addEventListener("click",e=>{if(e.target===$("tour"))closeTour()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeTour()});
 
-renderStudent("ST001");
+renderStudent("ST029");
 renderFaculty("dashboard");
