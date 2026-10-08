@@ -60,7 +60,7 @@ function go(screen){
   document.querySelectorAll(".site-nav [data-go]").forEach(x=>x.classList.toggle("active",x.dataset.go===screen));
   if(screen==="student") renderStudent($("studentId").value || "ST001");
   if(screen==="faculty") renderFaculty("dashboard");
-  window.scrollTo({top:0,behavior:"smooth"});
+  window.scrollTo({top:0,behavior:"auto"});
 }
 document.addEventListener("click",e=>{
   const loginEl=e.target.closest("[data-login]");
